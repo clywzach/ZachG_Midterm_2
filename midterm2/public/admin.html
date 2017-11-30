@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Comments</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/app.js"></script>
+
+</head>
+<body ng-app="candidate" ng-controller="MainCtrl">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+<h1> Store Management Interface </h1>
+  <form ng-submit="addCandidate()" style = "margin-top30px;">
+   	Product Name
+	 <input type="text" ng-model="formContent"></input>
+	<br>
+	Price
+	<input type ="text" ng-model="price"></input>
+	<br>
+	Picture URL
+	<input type ="text" ng-model="url"></input>
+    <button type="submit">Add Product</button>
+  </form>
+<h1> Current Products </h1>
+<div ng-repeat="candidate in candidates | orderBy: 'title'">
+
+<span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
+{{candidate.title}} - price {{candidate.price}} - ordered {{candidate.upvotes}}
+<img ng-src="{{candidate.url}}"height="100" width="100"/>
+
+</div>
+</div>
+</div>
+</body>
+</html>
